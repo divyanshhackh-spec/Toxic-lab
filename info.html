@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Toxic~Lab | About</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="/img/smoking-solid.svg" type="image/x-icon">
+  <link rel="stylesheet" href="/css/info.css">
+</head>
+
+<body class="info-page">
+
+  <div id="header"></div>
+
+  <div class="container-info">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>Understanding Air Pollution & Your Health</h1>
+      <p class="subtitle">
+        Toxic~Lab helps you interpret air quality data in a way that directly relates to your health, exposure, and long-term impact.
+      </p>
+
+      <a class="github-btn" href="https://github.com/divyanshhackh-spec/Toxic-lab.git" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 16 16"><path fill-rule="evenodd"
+        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01
+        1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95
+        0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68
+        0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15
+        0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2
+        0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+        View Project on GitHub
+      </a>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="card">
+      <h2>How the Platform Works</h2>
+      <div class="steps">
+        <div class="step">
+          <span>1</span>
+          <p>Select a state on the interactive India map.</p>
+        </div>
+        <div class="step">
+          <span>2</span>
+          <p>Provide your age and exposure duration.</p>
+        </div>
+        <div class="step">
+          <span>3</span>
+          <p>Receive real-time air quality insights and health impact estimates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA SOURCES -->
+    <section class="card">
+      <h2>Data & Research Sources</h2>
+      <p>
+        Air quality measurements are retrieved from the <strong>OpenWeather Air Pollution API</strong>, which provides real-time pollutant concentration data.
+      </p>
+
+      <ul class="links">
+        <li><a href="https://openweathermap.org/api/air-pollution" target="_blank">OpenWeather API Documentation</a></li>
+        <li><a href="https://berkeleyearth.wpengine.com/air-pollution-and-cigarette-equivalence/" target="_blank">Berkeley Earth Research</a></li>
+        <li><a href="https://aqli.epic.uchicago.edu/" target="_blank">Air Quality Life Index (University of Chicago)</a></li>
+      </ul>
+    </section>
+
+    <!-- CALCULATIONS -->
+    <section class="card">
+      <h2>Health Impact Calculations</h2>
+
+      <div class="formula-box">
+        <h4>Cigarette Equivalent</h4>
+        <p>Estimates pollution exposure relative to cigarette smoking.</p>
+        <div class="formula">Cigarettes = PM2.5 (µg/m³) ÷ 22</div>
+      </div>
+
+      <div class="formula-box">
+        <h4>Life Expectancy Reduction</h4>
+        <p>Derived from long-term epidemiological research on PM₂.₅ exposure.</p>
+        <div class="formula">((PM2.5 − PMref) ÷ 10) × 0.98 × (Age ÷ 70)</div>
+      </div>
+
+      <p class="note">
+        These calculations are estimates and intended for awareness purposes only — not medical diagnosis.
+      </p>
+    </section>
+
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
