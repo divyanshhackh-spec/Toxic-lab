@@ -1,353 +1,327 @@
-
-
 <!DOCTYPE html>
 <html lang=""en">
-
 <head>
-        <meta c
-        <meta harset="UTF-8" />
-          <title>Toxic~Lab | AQI Map Dashboard</title><title>
-              <link href=""https://fonts.googleapis.com/css?family=Inter:400,500,600" rel=""stylesheet">
-                <script type=""module" src=""https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"></script>
-              <link rel="shortcut icon" href="/img/smoking-solid.svg" type="image/x-icon">
+        <meta charset=""UTF-8">
+          <meta name=""viewport" content=""width=device-width, initial-scale="1.0">
+            <title>City Awakening - An Interactive Sunrise Experience</title><title>  <meta name="description" content="Experience a city waking up at sunrise through an immersive, interactive web experience">
+              <link rel="preconnect" href="https://fonts.googleapis.com">
+              <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+              <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+              <link rel="stylesheet" href="styles.css">
+              <link rel="stylesheet" href="advanced-animations.css">
+              <link rel="stylesheet" href="ultra-buildings.css">
+              <link rel="stylesheet" href="creative-effects.css">
             
               <style>
+                      .icon { width: 24px; height: 24px; fill: currentColor; }
+                          .icon-large { width: 48px; height: 48px; fill: currentColor; }
+                              .geometric-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.1; z-index: -1; }
 
-                  /* ===== GLOBAL ===== */
-                  body {
-                          margin: 0;
-                            font-family: 'Inter', sans-serif;
-                              background: linear-gradient(135deg, #0f172a,)
-                              background: linear-gradient(135deg, #0f172a #0b1220);
-                                color: #e5e7eb;
-                  }
-                  
-                  /* Smooth UI everywhere */
-                  * {
-                          transition: background-color .25s ease, 
-                                        border-color .25s ease, 
-                                                      box-shadow .25s ease, 
-                                                                    transform .2s cubic-bezier(.2,.8,.2,1);
-                  }
+                                  
 
-                  h2, h3 {
-                          font-weight: 500;
-                            letter-spacing: 0.4px;
-                              color: #f8fafc;
-                  }
+                                  
+                                  :root {
+                                          scroll-behavior: smooth;
+                                  }
 
-                  /* ===== GLASS PANELS ===== */
-                  .map-container,
-                  .container-aqilist {
-                          background: rgba(17, 24, 39, 0.65);
-                            backdrop-filter: blur(14px);
-                              border-radius: 18px;
-                                padding: 24px;
-                                  margin: 30px auto;
-                                    max-width: 1200px;
-                                      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-                                        border: 1px solid rgba(255,25)
-                                        border: 1px solid rgba(255,5,255,0.05);
-                  }
-                  
-                  /* Card lift on hover */
-                  .map-conta25)
-                  .map-iner:hover,
-                  .container-aqilist:hover {
-                          transform: translateY(-4px);
-                            box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-                  }
-                  
-                  /* ===== MAP GLOW ===== */.container-aqilist#indian-map {
-                          width: 100%;
-                            height: 520px;
-                              border-radius: 18px;
-                                overflow: hidden;
-                                  position: relative;
-                                    background: #0b1220;
-                                      box-shadow:inset    0 0 0 1px rgba(255,255,255,0.05),
-                                          0 0 30px rgba()
-                                          0 0 30px rgba59,130,246,0.25);
-                  }
-                  
-                  #indian-map::after {
-                          content: "";
-                            position: absolute;
-                              inset: 0;
-                                border-radius: 18px;
-                                  pointer-events: none()
-                                  pointer-events: ;
-                                    box-shadow: 0 0 50px rgba(59,130,246,0.35);
-                                      opacity: 0.5;
-                                        animation: pulseGlow 5s ease-in-out infinite;
-                  }
-                  
-                  @keyframes pulseGlow {
-                          0%,100% { opacity: 0.3; }
-                            50% { opacity: 0.8; }
-                  }
-                  
-                  /* ===== SELECTS ===== */.container-aqilistselect {
-                          padding: 10px 12px;
-                            border-radius: 8px;
-                              background: #1e293b;
-                                color: #f1f5f9;
-                                  border: 1px solid ()
-                                  border: 1px #334155;
-                                    cursor: pointer;
-                  }
-                  
-                  select:hover {
-                          border-color: #3b82f6;
-                            background: #223047;
-                  }
-                  
-                  select:focus {
-                          outline: none;
-                            box-shadow: 0 0 0 2px rgba(59,130,246,0.5);
-                  }
-                  
-                  /* ===== PREMIUM BUTTON ANIMATION ===== */.container-aqilistbutton {
-                          position: relative;
-                            overflow: hidden;
-                              background: linear-gradient(135deg, #2563eb, #1d4ed8);
-                                color: white;
-                                  border: none;
-                                    padding: 10px 18px;
-                                      border-radius: 8px;
-                                        cursor: pointer;
-                                          font-weight: 500;
-                                            letter-spacing: .3px;
-                  }
+                                      body {
+                                                overflow-x: hidden;
+                                      }
 
-                  /* Depth hover */
-                  button:hover {
-                          transform: translateY(-3px) scale(1.02);
-                            box-shadow: 0 10px 25px rgba(37,99,235,0.45);
-                  }
+                                          
+                                          .ultra-loading-screen {
+                                                      position: fixed;
+                                                            inset: 0;
+                                                                  display: flex;
+                                                                        flex-direction: column;
+                                                                              align-items: center;
+                                                                                    justify-content: center;
+                                                                                          background: radial-gradient(circle at top, #1a2a6c, #000);
+                                                                                                z-index: 9999;
+                                                                                                      animation: loading-bg-pulse 4s ease-in-out infinite;
+                                          }
 
-                  /* Click press */
-                  button:active {
-                          transform: translateY(1px) scale(.98);
-                            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-                  }
-
-                  /* Light sweep animation */
-                  button::after {
-                          content: "";
-                            position: absolute;
-                              top: 0;
-                                left: -75%;
-                                  width: 50%;
-                                    height: 100%;
-                                      background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
-                                        transform: skewX(-20deg);
-                  }
-
-                  button:hover::after {
-                          animation: shine 0.8s forwards;
-                  }
-
-                  @keyframes shine {
-                          100% { left: 130%; }
-                  }
-
-                  /* ===== TABLE ===== */
-                  #aqi-table {
-                          width: 100%;
-                            border-collapse: collapse;
-                              margin-top: 20px;
-                                border-radius: 12px;
-                                  overflow: hidden;
-                  }
-
-                  #aqi-table thead {
-                          background: #1e293b;
-                  }
-
-                  #aqi-table th {
-                          padding: 14px;
-                            text-align: left;
-                              color: #cbd5e1;
-                                font-size: 13px;
-                                  letter-spacing: .5px;
-                  }
-
-                  #aqi-table td {
-                          padding: 14px;
-                            border-top: 1px solid rgba(255,255,255,0.05);
-                  }
-
-                  #aqi-table tr {
-                          transition: background .2s ease, transform .15s ease;
-                  }
-
-                  #aqi-table tr:hover {
-                          background: rgba(59,130,246,0.08);
-                            transform: scale(1.01);
-                  }
-
-                  /* ===== LOADER ===== */
-                  #loader {
-                          position: fixed;
-                            inset: 0;
-                              background: radial-gradient(circle, #0f172a, #020617);
-                                display: flex;
-                                  justify-content: center;
-                                    align-items: center;
-                                      z-index: 9999;
-                  }
-
-                  /* Text polish */
-                  .last-updated {
-                          margin-top: 12px;
-                            font-size: 13px;
-                              color: #94a3b8;
-                                letter-spacing: .3px;
-                  }
-
-                  </style>
-
-                  </title><head>
-                        <body>
-
-                                <div id=""loader">
-                                  <dotlottie-player src="/img/cigarate.lottie" background="transparent" speed="1"
-                                    style="width:300px;height:300px;" loop autoplay>
-                                  </dotlottie-player><dotlottie-player>  </dotlottie-player><div>
-                                      <div id=""header"></div><div>
-                                            <div class=""map-container">
-                                              <h3>Select a City</h3><h3>    <p>Select a state and then a city to view air pollution data.</p><p>
-                                                    <div style=""margin-bottom:20px; display:flex; gap:10px; flex-wrap:wrap;">
-                                                      <select id="filterStateSelect">
-                                                                    <option value=""" selected>All States</option><option value="      </select>
-                                                                              <select id="stateSelect">
-                                                                                            <option value=""" disabled selected>Select a City</option><option value="      </select>
-                                                                                            </div>
-                                                                                            
-                                                                                                <div class="map-controls">
-                                                                                                            <button id=""backToIndia" style=""display:none;"> Back to India</button><button>    </button><div>
-                                                                                                                      <div id=""indian-map"></div><div>    <select id="citySelect" style="displ</div></div>
-                                                                                                                      <div id=""indian-map"></div><div>    <select id="citySelect" style="ay:none;">
-                                                                                                                            <option selected disabled>Select City</option><option value="    </select>
-                                                                                                                            </div>
-                                                                                                                            
-                                                                                                                              <div class="container-aqilist">
-                                                                                                                                        <h2>India Air Quality Index Dashboard</h2><h2>    <div id="loading">Loading air quality data...</div><div>    <div id="error" style="display:none;"></div><div>
-                                                                                                                                              <table id=""aqi-table" style=""display:none;">
-                                                                                                                                                      <thead>
-                                                                                                                                                                    <tr>
-                                                                                                                                                                                  <th>Rank</th>t</th>
-                                                                                                                                                                                  <th>Rank</th><h>          <th>City</th><th>          <th>AQI</th><th>          <th>AQI Status</th><th>          <th>Standard Value</th><th>        </th><tr>      </tr><thead>      <tbody id="aqi-data"></tbody><tbody>    </tbody><table>
-                                                                                                                                                                                        <div id=""last-updated" class=""last-updated"></div><div>  </div><div>
-                                                                                                                                                                                            <div id=""footer"></div><div>
-                                                                                                                                                                                                  <script src=""https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.maps.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.india.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.gujarat.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.maharashtra.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.karnataka.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.rajasthan.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.tamilnadu.js"></script>
-                                                                                                                                                                                                  <script src="https://cdn.fusioncharts.com/fusioncharts/latest/maps/fusioncharts.delhi.js"></script>
+                                              @keyframes loading-
+                                              @keyframes bg-pulse {
+                                                      0%,100% { filter: brightness(1); }
+                                                            50% { filter: brightness(1.3); }
+                                              }
+                                              
+                                                  .ultra-loading-logo {
+                                                            position: relative;
+                                                                  width: 96px;
+                                                                        height: 96px;
+                                                                              display: flex;
+                                                                                    align-items: center;
+                                                                                          justify-content: center;
+                                                  }
+                                                  
+                                                      .loading-orb {
+                                                                  position: absolloading-
+                                                                  position: ute;
+                                                                        width: 20px;
+                                                                              height: 20px;
+                                                                                    border-radius: 50%;
+                                                                                          background: radial-gradient(circle, #ffedc2, #ff9a3c);
+                                                                                                box-shadow: 0 0 12px rgba(255, 184, 108, 0.8);
+                                                                                                      animation: orb-orbit 1.8s linear infinite;
+                                                      }
+                                                      
+                                                          .loading-orb:nth-child(1) { transform-origin:absolloading-
+                                                          .loading-orb:nth-child(1) { transform- 48px 0; }
+                                                              .loading-orb:nth-child(2) { transform-origin: -48px 0; animation-delay: 0.2s; }
+                                                                  .loading-orb:nth-child(3) { transform-origin: 0 48px; animation-delay: 0.4s; }
+                                                                  
+                                                                      .loading-core {
+                                                                              width: 32px;
+                                                                                    height: 32px;
+                                                                                          border-raorigin:absolloading-
+                                                                                          border-dius: 50%;
+                                                                                                background: radial-gradient(circle, #fff7e6, #ffb347);
+                                                                                                      box-shadow: 0 0 20px rgba(255raorigin:absolloading-
+                                                                                                      box-shadow: 0 0 20px rgba(, 196, 120, 0.9);
+                                                                                                            animation: core-pulse 1.2s ease-in-out infinite;
+                                                                      }
+                                                                      
+                                                                          @keyframes orb-orbit {
+                                                                                    0% { transform: rotate(0deg) translateX(0); opacity: 0.8; }
+                                                                                          50% { opacity: 1; }
+                                                                                                100% { transform: rotate(360deg) translateX(0); opacity: 0.8; }
+                                                                          }
+                                                                          
+                                                                              @keyframes core-pulse {
+                                                                                          0%,100% { transform: scale(1); }
+                                                                                                50% { transform: scale(1.15); }
+                                                                              }
+                                                                              
+                                                                                  .loading-text .holographic-text {
+                                                                                          animation: holo-shift 3s linear infinite;
+                                                                                  }
+                                                                                  
+                                                                                      @keyframes holo-shift {
+                                                                                                0% { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+                                                                                                      50% { text-shadow: 0 0 16px rgba(140, 255, 255, 0.9); }
+                                                                                                            100% { text-shadow: 0 0 8px rgba(255,255,255,0.6); }
+                                                                                      }
+                                                                                      
+                                                                                          .loading-progress .progress-bar {
+                                                                                                      width: 0;
+                                                                                                            animation: loading-bar 2.5s ease-in-out forwards;
+                                                                                          }
+                                                                                          
+                                                                                              @keyframes loading-bar {
+                                                                                                      0% { width: 0; }
+                                                                                                            70% { width: 80%; }
+                                                                                                                  100% { width: 100%; }
+                                                                                              }
+                                                                                              
+                                                                                                  
+                                                                                                  #sky-background {
+                                                                                                            animation: sky-gradient-shift 30s ease-in-out infinite alternate;
+                                                                                                  }
+                                                                                                  
+                                                                                                      @keyframes sky-gradient-shift {
+                                                                                                                  0% { filter: hue-rotate(0deg) brightness(1); }
+                                                                                                                        50% { filter: hue-rotate(10deg) brightness(1.1); }
+                                                                                                                              100% { filter: hue-rotate(-5deg) brightness(0.95); }
+                                                                                                      }
+                                                                                                      
+                                                                                                          #stars-layer .star {
+                                                                                                                  animation: star-twinkle 2.5s ease-in-out infinite alternate;
+                                                                                                          }
+                                                                                                          
+                                                                                                              #stars-layer .star:nth-child(odd) {
+                                                                                                                        animation-duration: 3.3s;
+                                                                                                              }
+                                                                                                              
+                                                                                                                  @keyframes star-twinkle {
+                                                                                                                              0% { opacity: 0.3; transform: scale(0.9); }
+                                                                                                                                    50% { opacity: 1; transform: scale(1.2); }
+                                                                                                                                          100% { opacity: 0.4; tr255raorigin:absolloading-
+                                                                                                                                          100% { opacity: 0.4; ansform: scale(1); }
+                                                                                                                                          }
+                                                                                                                                          
+                                                                                                                                              #clouds-layer .cloud {
+                                                                                                                                                      animation: cloud-drift 40s linear infinite;
+                                                                                                                                              }
+                                                                                                                                              
+                                                                                                                                                  #clouds-layer .cloud-2 {
+                                                                                                                                                            animation-duration: 60s;
+                                                                                                                                                                  animation-direction: reverse;
+                                                                                                                                                                        opacity: 0.8;
+                                                                                                                                                  }
+                                                                                                                                                  
+                                                                                                                                                      #clouds-layer .cloud-tr255raorigin:absolloading-
+                                                                                                                                                      #clouds-layer .3 {
+                                                                                                                                                                  animation-duration: 50s;
+                                                                                                                                                                        animation-delay: 5s;
+                                                                                                                                                      }
+                                                                                                                                                      
+                                                                                                                                                          @keyframes cloud-drift {
+                                                                                                                                                                  0% { transform: translateX(cloud-tr255raorigin:absolloading-
+                                                                                                                                                                  0% { transform: -10%); }
+                                                                                                                                                                        100% { transform: translateX(110%); }
+                                                                                                                                                                  }
+                                                                                                                                                                  
+                                                                                                                                                                      
+                                                                                                                                                                      .bird {
+                                                                                                                                                                              animation:alternate        bird-flap 0.6s ease-in-out infinite alternate,
+                                                                                                                                                                                      bird-flight 25s linear infinite;
+                                                                                                                                                                      }
+                                                                                                                                                                      
+                                                                                                                                                                          .bird:nth-child(2) {
+                                                                                                                                                                                    animation-duration: 0(cloud-tr255raorigin:absolloading-
+                                                                                                                                                                                    animation-duration: .8s, 30s;
+                                                                                                                                                                                          animation-delay: 0.1s, 5s;
+                                                                                                                                                                          }
+                                                                                                                                                                          
+                                                                                                                                                                              .bird:nth-child(3) {
+                                                                                                                                                                                          animation-duration: 0.7s, 28s;
+                                                                                                                                                                                                animation-delay: 0.2s, 10s;
+                                                                                                                                                                              }
+                                                                                                                                                                              
+                                                                                                                                                                                  @keyframes bird-flap {
+                                                                                                                                                                                          0% { transform: scale(1) translateY(0); }
+                                                                                                                                                                                                100% { transform: scale(1.05) translateY(-4px);0(cloud-tr255raorigin:absolloading-
+                                                                                                                                                                                                100% { transform: scale(1.05) translateY(-4px }
+                                                                                                                                                                                                }
                                                                                                                                                                                                 
-                                                                                                                                                                                                  <script src="/js/selectmap.js"></script>
-                                                                                                                                                                                                  <script src="/js/script.js"></script>
-                                                                                                                                                                                                
-                                                                                                                                                                                                </div><body>
-                                                                                                                                                                                                      </body><html>
-
-
-                                                                                                                                                                                                      <link href=""https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel=""stylesheet" />
-
-                                                                                                                                                                                                      <header class=""header">
-                                                                                                                                                                                                          <div class="container">
-                                                                                                                                                                                                                  <a href=""/"><div class="title">
-                                                                                                                                                                                                                                    <h1></h1>
-                                                                                                                                                                                                                                    <h1Toxic~Lab</h1>
-                                                                                                                                                                                                                                      </h1Toxic>div></h1Toxic><a href="        
-                                                                                                                                                                                                                                              <a href="/info.html"><span class="material-symbols-outlined info">
-                                                                                                                                                                                                                                                            info
-                                                                                                                                                                                                                                                                        </span>span></a><a href="</header>
-                                                                                                                                                                                                                                                                              
-                                                                                                                                                                                                                                                                              <style>.header {
-                                                                                                                                                                                                                                                                                        background-color: #111827;
-                                                                                                                                                                                                                                                                                        border-bottom: 1px solid #202c47d7;
-                                                                                                                                                                                                                                                                                        z-index: 10000;
-                                                                                                                                                                                                                                                                                        width: 100%;
-                                                                                                                                                                                                                                                                                        background-color:#111827d7;
-                                                                                                                                                                                                                                                                                        backdrop-filter: blur(10px);
-                                                                                                                                                                                                                                                                                        top: 0;
-                                                                                                                                                                                                                                                                                        position: fixed;
-                                                                                                                                                                                                                                                                                        transition: top 0.3s;
-                                                                                                                                                                                                                                                                                    a{
-                                                                                                                                                                                                                                                                                            text-decoration: none ;
-                                                                                                                                                                                                                                                                                    }
-
-                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                    @keyframes bird-flight {
+                                                                                                                                                                                                            0% { transform: translateX(-10vw); }
+                                                                                                                                                                                                                  100% { transform: translateX()}
+                                                                                                                                                                                                                  100% { transform: translateX120vw); }
+                                                                                                                                                                                                    }
+                                                                                                                                                                                                    
+                                                                                                                                                                                                        
+                                                                                                                                                                                                        .building-layer .building {
+                                                                                                                                                                                                                  animation: building-float 10s ease-in-out infinite;
+                                                                                                                                                                                                        }
+                                                                                                                                                                                                        
+                                                                                                                                                                                                            .building-layer .building:nth-child(odd) {
+                                                                                                                                                                                                                        animation-delay: 2s;
+                                                                                                                                                                                                            }
+                                                                                                                                                                                                            
+                                                                                                                                                                                                                @keyframes building-float {
+                                                                                                                                                                                                                        0%,100% { transform: translateY(0); }
+                                                                                                                                                                                                                              50% { transform: translat()}
+                                                                                                                                                                                                                              50% { transform: eY(-4px); }
+                                                                                                                                                                                                                }
+                                                                                                                                                                                                                
+                                                                                                                                                                                                                    .professional-window,
+                                                                                                                                                                                                                        .luxury.window,
+                                                                                                                                                                                                                            .precision-grid .window {
+                                                                                                                                                                                                                                    position: relative;
+                                                                                                                                                                                                                                          overflow: hidden;
+                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                .professional-window::after,
+                                                                                                                                                                                                                                    .luxury.window::after,
+                                                                                                                                                                                                                                        .precision-grid .window::after {
+                                                                                                                                                                                                                                                content: "";
+                                                                                                                                                                                                                                                      position: absolute;
+                                                                                                                                                                                                                                                            inset: 0;
+                                                                                                                                                                                                                                                                  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.85), transparent);
+                                                                                                                                                                                                                                                                        transform: translateX(-150%);
+                                                                                                                                                                                                                                                                              animation: window-shimmer 6s linear infinite;
+                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                            @keyframes window-shimmer {
+                                                                                                                                                                                                                                                      0% { transform:translat()}
+                                                                                                                                                                                                                                                      0% {  translateX(-150%); opacity: 0; }
+                                                                                                                                                                                                                                                            20% { opacity: 0.9; }
+                                                                                                                                                                                                                                                                  40% { transform: translateX(150%); opacity: 0; }
+                                                                                                                                                                                                                                                                        100% { transform: translateX(150%); opacity: 0; }
+                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                .streetlight .light-glow {
+                                                                                                                                                                                                                                                            animation: light-pulse 3s ease-in-out infinite;
+                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                    @keyframes light-pulse {
+                                                                                                                                                                                                                                                            0%,100% { opacity: 0.4; transform: scale(0.95); }
+                                                                                                                                                                                                                                                                  50% { opatransform:translat()}
+                                                                                                                                                                                                                                                                  50% { city: 1; transform: scale(1.1); }
+                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                        .hero-title.ultra-title {
+                                                                                                                                                                                                                                                                  position: relative;
+                                                                                                                                                                                                                                                                        display: inline-block;
+                                                                                                                                                                                                                                                                              transform-origin: center;
+                                                                                                                                                                                                                                                                                    animation: hero-glow 4s ease-in-out infinite;
+                                                                                                                                                                                                                                                                                          will-change: transform;
+                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                            @keyframes hero-glow {
+                                                                                                                                                                                                                                                                        0%,100% { text-shadow: 0 0 16px rgba(255,255,255,0.5); }
+                                                                                                                                                                                                                                                                              50% { text-shadow: 0 0 30px rgba(255, 200, 120, 0.9); }
+                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                #sky-background,
+                                                                                                                                                                                                                                                                    #stars-layer,
+                                                                                                                                                                                                                                                                        #city-skyline,
+                                                                                                                                                                                                                                                                            #streetlights {
+                                                                                                                                                                                                                                                                                    will-change: transform;
+                                                                                                                                                                                                                                                                                          transition: transform 0.05s linear;
+                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                            
                                                                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                                                                                .container {
-                                                                                                                                                                                                                                                                                        width: 90%;
-                                                                                                                                                                                                                                                                                            margin: 0 auto;
-                                                                                                                                                                                                                                                                                                display: flex;
-                                                                                                                                                                                                                                                                                                    justify-content: space-between;
-                                                                                                                                                                                                                                                                                                        align-items: center;
+                                                                                                                                                                                                                                                                                .content-section {
+                                                                                                                                                                                                                                                                                          opacity: 0;
+                                                                                                                                                                                                                                                                                                transform: tranopatransform:translat()}
+                                                                                                                                                                                                                                                                                                transform: slateY(40px);
+                                                                                                                                                                                                                                                                                                      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
                                                                                                                                                                                                                                                                                 }
-
-                                                                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                                                                  .title {
-                                                                                                                                                                                                                                                                                        color: #fff;
-                                                                                                                                                                                                                                                                                            font-size: 14px;
-                                                                                                                                                                                                                                                                                                font-weight: bold;
-                                                                                                                                                                                                                                                                                                    margin-left: 10px;
-                                                                                                                                                                                                                                                                                                        text-align: start;
-                                                                                                                                                                                                                                                                                                            
-                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                    }}"></a>
-                                                                                                                                                                                                                                              </span></a>"></a></h1Toxic>></h1>
-                                                                                                                                                                                                                  </div></a>"
-                                                                                                                                                                                                          </div></header>
-                                                                                                                                                                                                      </html>
-                                                                                                                                                                                                </body></script>
-                                                                                                                                                                                            </div></div>
-                                                                                                                                                                                        </div></div></div>
-                                                                                                                                                                                  </table></tbody></tbody></thead></tr></th></th></th></th></th></h>t</th>
-                                                                                                                                                                    </tr>
-                                                                                                                                                      </thead>
-                                                                                                                                              </table>"
-                                                                                                                                        </div></div></div></h2></h2>
-                                                                                                                              </option>"></option></option></select>displ</div></div>
-                                                                                                            </div></button></button>"
-                                                                                                </option>"></option></option>"
-                                                                              </option>"></option></option>"
-                                                      </select></div>"
-                                              </p></p></h3></h3></div>
-                                      </div></div>
-                                  </div></dotlottie-player></dotlottie-player></div>
-                        </body>
-                  </head>
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  }
-                  } ()
-                  })
-                  }
-                  }
-                  },)
-                  }
-              </style></script>
-          </title></title>c
+                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                    .content-section.revealed {
+                                                                                                                                                                                                                                                                                                opacity: 1;
+                                                                                                                                                                                                                                                                                                      transform: translateY(0);
+                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                        .tilt-effect {
+                                                                                                                                                                                                                                                                                                transform-style: preserve-3d;
+                                                                                                                                                                                                                                                                                                      transition: transform 0.2s ease, box-shadow 0.2s ease;
+                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                            .tilt-effect:htranopatransform:translat()}
+                                                                                                                                                                                                                                                                                            .tilt-effect:over {
+                                                                                                                                                                                                                                                                                                      transform: translateY(-6px) rotateX(6deg) rotateY(-6deg);
+                                                                                                                                                                                                                                                                                                            box-shadow: 0htranopatransform:translat()}
+                                                                                                                                                                                                                                                                                                            box-shadow:  18px 40px rgba(0,0,0,0.25);
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                            
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                .interaction-prompt {
+                                                                                                                                                                                                                                                                                                            animation: interaction-bob 3s ease-in-out infinite;
+                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                    @keyframes interaction-bob 0htranopatransform:translat()}
+                                                                                                                                                                                                                                                                                                    @keyframes interaction-{
+                                                                                                                                                                                                                                                                                                            0%,100% { transform: translateY(0); opacity: 0.7; }
+                                                                                                                                                                                                                                                                                                                  50% { transform: translateY(-6px); opacity: 1; }
+                                                                                                                                                                                                                                                                                                    }
+                                                                                                                                                                                                                                                                                                    
+                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                        .premium-scroll-indicator {
+                                                                                                                                                                                                                                                                                                                  position: fibob 0htranopatransform:translat()}
+                                                                                                                                                                                                                                                                                                                  position: xed;
+                                                                                                                                                                                                                                                                                                                        top: 0;
+                                                                                                                                                                                                                                                                                                                              left: 0;
+                                                                                                                                                                                                                                                                                                                                    width: 100%;
+                                                                                                                                                                                                                                                                                                                                          height: 4px;
+                                                                                                                                                                                                                                                                                                                                                background: rgba(255,255,255,0.1);
+                                                                                                                                                                                                                                                                                                                                                      z-index: 500;
+                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                            .premium-scroll-indicator > div {
+                                                                                                                                                                                                                                                                                                                        height: 100%;
+                                                                                                                                                                                                                                                                                                                              background: linear-gradifibob 0htranopatransform:translat()}
+                                                                                                                                                                                                    });0(cloud-tr255raorigin:absolloading-
+                                          }
+                                      }
+                                  }
+              </style></title></title>
 </head></html>
